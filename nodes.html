@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+		<style type="text/css">
+			.box{
+				border:1px solid #000;
+			}
+			.submenu{
+				padding-left:15px;
+				line-height: 30px;
+			}
+			.arrow_r{
+				width:0;
+				height:0;
+				font-size:0;
+				border:6px solid transparent;
+				border-left:6px solid #000;
+			}
+			.arrow_t{
+				width:0;
+				height:0;
+				font-size:0;
+				border:6px solid transparent;
+				border-top:6px solid #000;
+			}
+			.none{
+				display: none;
+			}
+			.block{
+				display:block;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="box">
+			<div class="submenu">
+				<i class="arrow_r"></i><a href="#" style='color:#f00;'>111111111</a>
+			   <div class="submenu none">
+			   	 <i class="arrow_r"></i><a href="#">22222222222</a>
+			   	 <div class="submenu none">
+			   	 	<i class="arrow_r"></i><a href="#">33333333333</a>
+				   	 	<div class="submenu none">
+				   	 	<i class="arrow_r"></i><a href="#">4444444444</a>
+				   	 	   <div class="submenu none">
+				   	 	     <i class="arrow_r"></i><a href="#">5555555555</a>
+				   	           <div class="submenu none">
+						   	     <a href="#">aaaaaaaaa</a>
+						   	   </div>
+						   	   <div class="submenu none">
+						   	     <a href="#">bbbbbbbbbb</a>
+						   	   </div>
+						   	   <div class="submenu none">
+						   	     <a href="#">cccccccccc</a>
+						   	   </div>
+				   	 	   </div>
+				   	    </div>
+				   	    <div class="submenu none">
+				   	    	<a href="#">6666666666</a>
+				   	    </div>
+				   	    <div class="submenu none">
+				   	    	<a href="#">77777777777</a>
+				   	    </div>
+				   	    <div class="submenu none">
+				   	    	<a href="#">888888888888</a>
+				   	    </div>
+			   	 </div>
+			     <div class="submenu none">
+			     	<a href="#">02202020</a>
+			     </div>
+			   </div>
+			
+			   <div class="submenu none">
+			   	 <a href="#">1-11111</a>
+			   </div>
+			
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				$(document).on("click",".submenu a",function(){
+					var flag = $(this).siblings('.submenu').hasClass('none');
+					var block = $(this).siblings('.submenu').hasClass('block');
+					if(flag){
+						$(this).prev().removeClass('arrow_r').addClass('arrow_t');
+						$(this).siblings('.submenu').removeClass('none');
+                        $(this).siblings('.submenu').addClass('block').children('a').css('color','#f00');
+
+					} else {
+						$(this).prev().removeClass('arrow_t').addClass('arrow_r');
+                        $(this).parent().find('.submenu').removeClass('block').addClass('none');
+                        $(this).parent().find('.submenu a').css('color','#ff0');
+                        $(this).parent().find('.submenu i').removeClass('arrow_t').addClass('arrow_r');
+					}
+				});
+				
+		});
+		</script>
+	</body>
+</html>
